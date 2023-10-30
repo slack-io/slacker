@@ -13,6 +13,7 @@ Built on top of the Slack API [github.com/slack-go/slack](https://github.com/sla
 - Replies can be new messages or in threads
 - Replies can be ephemeral, scheduled, updated or deleted
 - Supports Slash Commands and Interactive Messages
+- Supports `slog.Logger`
 - Supports `context.Context`
 - Supports middlewares & grouping of commands
 - Supports Cron Jobs using [https://github.com/robfig/cron](https://github.com/robfig/cron)
@@ -86,5 +87,5 @@ an issue with Slacker or wish to contribute to the project.
 There are a few common issues that can cause this:
 
 * The OAuth (bot) Token may be incorrect. In this case authentication does not fail like it does if the App Token is incorrect, and the bot will simply have no scopes and be unable to respond.
-* Required scopes are missing from the OAuth (bot) Token. Similar to the incorrect OAuth Token, without the necessary scopes, the bot cannot respond.
+* Required scopes are missing from the OAuth (bot) Token. Similar to the incorrect OAuth Token, without the necessary scopes, the bot can not respond.
 * The bot does not have the correct event subscriptions setup, and is not receiving events to respond to.
