@@ -1,4 +1,4 @@
-module github.com/shomali11/slacker/v2
+module github.com/slack-io/slacker
 
 go 1.21
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 	"github.com/slack-go/slack/socketmode"
 )
 

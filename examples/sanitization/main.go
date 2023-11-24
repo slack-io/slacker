@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Override the default event input cleaning function (to sanitize the messages received by Slacker)

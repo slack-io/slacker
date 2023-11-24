@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Showcasing the ability to leverage `context.Context` to add a timeout

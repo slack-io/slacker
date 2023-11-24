@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Defining an authorization middleware so that a command can only be executed by authorized users

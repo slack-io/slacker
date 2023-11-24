@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Deleting messages via timestamp

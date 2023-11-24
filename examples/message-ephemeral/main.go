@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Sending ephemeral messages

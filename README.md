@@ -23,7 +23,7 @@ Built on top of the Slack API [github.com/slack-go/slack](https://github.com/sla
 # Install
 
 ```
-go get github.com/shomali11/slacker/v2
+go get github.com/slack-io/slacker
 ```
 
 # Examples

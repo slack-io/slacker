@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Showcasing the ability to pass your own logger

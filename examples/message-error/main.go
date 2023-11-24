@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/shomali11/slacker/v2"
+	"github.com/slack-io/slacker"
 )
 
 // Defines two commands that display sending errors to the Slack channel.
