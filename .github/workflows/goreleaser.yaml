@@ -9,6 +9,9 @@ on:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
+    permissions:
+      # write is needed for creating releases
+      contents: write
     steps:
       -
         name: Checkout
