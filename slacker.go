@@ -282,9 +282,11 @@ func (s *Slacker) Listen(ctx context.Context) error {
 						continue
 					}
 
+					ctxTenant := SetTenantID(ctx, event.TeamID)
+
 					switch event.InnerEvent.Type {
 					case "message", "app_mention": // message-based events
-						go s.handleMessageEvent(ctx, event.InnerEvent.Data)
+						go s.handleMessageEvent(ctxTenant, event.InnerEvent.Data)
 
 					default:
 						if s.unsupportedEventHandler != nil {
@@ -303,8 +305,9 @@ func (s *Slacker) Listen(ctx context.Context) error {
 
 					// Acknowledge receiving the request
 					s.socketModeClient.Ack(*socketEvent.Request)
+					ctxTenant := SetTenantID(ctx, event.TeamID)
 
-					go s.handleMessageEvent(ctx, &event)
+					go s.handleMessageEvent(ctxTenant, &event)
 
 				case socketmode.EventTypeInteractive:
 					callback, ok := socketEvent.Data.(slack.InteractionCallback)
@@ -316,7 +319,8 @@ func (s *Slacker) Listen(ctx context.Context) error {
 					// Acknowledge receiving the request
 					s.socketModeClient.Ack(*socketEvent.Request)
 
-					go s.handleInteractionEvent(ctx, &callback)
+					ctxTenant := SetTenantID(ctx, callback.Team.ID)
+					go s.handleInteractionEvent(ctxTenant, &callback)
 
 				default:
 					if s.unsupportedEventHandler != nil {
@@ -335,6 +339,27 @@ func (s *Slacker) Listen(ctx context.Context) error {
 	// blocking call that handles listening for events and placing them in the
 	// Events channel as well as handling outgoing events.
 	return s.socketModeClient.RunContext(ctx)
+}
+
+// In EventAPI - SocketMode, the bot will get events from all installed workspaces
+// in order to distinguish between them, Slack attach the TeamID to the event
+// The TeamID is the unique identifier for the workspace and exist in the global event
+// We set the TeamID in the context to be used in the handlers
+// To access the TeamID, extract the Team from the event.Context()
+// i.e. teamID, _ := slacker.FromContext(ctx.Context())
+
+// SetTenantID sets the tenant ID in the context
+type TenantIDKey struct{}
+
+// SetTenantID sets the tenant ID in the context
+func SetTenantID(ctx context.Context, tenantID string) context.Context {
+	return context.WithValue(ctx, TenantIDKey{}, &tenantID)
+}
+
+// FromContext gets the tenant ID from the context
+func FromContext(ctx context.Context) (*string, bool) {
+	u, ok := ctx.Value(TenantIDKey{}).(*string)
+	return u, ok
 }
 
 func (s *Slacker) defaultHelp(ctx *CommandContext) {
