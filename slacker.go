@@ -544,7 +544,7 @@ func (s *Slacker) ignoreBotMessage(messageEvent *MessageEvent) bool {
 		if messageEvent.BotID == slackBotID {
 			return false
 		}
-		bot, err := s.slackClient.GetBotInfo(messageEvent.BotID)
+		bot, err := s.slackClient.GetBotInfo(slack.GetBotInfoParameters{Bot: messageEvent.BotID})
 		if err != nil {
 			if err.Error() == "missing_scope" {
 				s.logger.Error("unable to determine if bot response is from me -- please add users:read scope to your app")
