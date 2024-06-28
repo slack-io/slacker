@@ -78,9 +78,9 @@ func (r *Writer) post(channel string, message string, blocks []slack.Block, opti
 	}
 
 	if postOptions.UnfurlLinks != nil {
-		if *postOptions.UnfurlLinks {
+		if !*postOptions.UnfurlLinks {
 			opts = append(opts, slack.MsgOptionDisableLinkUnfurl())
-			fmt.Println("Unfurl Links Set to:", *postOptions.UnfurlLinks)
+			fmt.Println("unfurls are disabled")
 		}
 	}
 
