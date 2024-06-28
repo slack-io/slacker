@@ -77,10 +77,10 @@ func (r *Writer) post(channel string, message string, blocks []slack.Block, opti
 		opts = append(opts, slack.MsgOptionSchedule(postAt))
 	}
 
+	// response_writer.go
 	if postOptions.UnfurlLinks != nil {
 		if !*postOptions.UnfurlLinks {
-			opts = append(opts, slack.MsgOptionDisableLinkUnfurl())
-			fmt.Println("unfurls are disabled")
+			opts = append(opts, slack.MsgOptionDisableLinkUnfurl(), slack.MsgOptionDisableMediaUnfurl())
 		}
 	}
 
