@@ -77,6 +77,13 @@ func (r *Writer) post(channel string, message string, blocks []slack.Block, opti
 		opts = append(opts, slack.MsgOptionSchedule(postAt))
 	}
 
+	if postOptions.UnfurlLinks != nil {
+		if *postOptions.UnfurlLinks {
+			opts = append(opts, slack.MsgOptionDisableLinkUnfurl())
+			fmt.Println("Unfurl Links Set to:", *postOptions.UnfurlLinks)
+		}
+	}
+
 	_, timestamp, err := r.slackClient.PostMessageContext(
 		r.ctx,
 		channel,

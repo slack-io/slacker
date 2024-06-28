@@ -1,6 +1,8 @@
 package slacker
 
 import (
+	"fmt"
+
 	"github.com/slack-go/slack"
 )
 
@@ -58,5 +60,11 @@ func (r *Replier) convertOptions(options ...ReplyOption) []PostOption {
 	if replyOptions.ScheduleTime != nil {
 		responseOptions = append(responseOptions, SetSchedule(*replyOptions.ScheduleTime))
 	}
+
+	if replyOptions.UnfurlLinks != nil {
+		responseOptions = append(responseOptions, SetUnfurlLinks(*replyOptions.UnfurlLinks))
+		fmt.Println("Unfurl Links Set to:", *replyOptions.UnfurlLinks)
+	}
+
 	return responseOptions
 }
