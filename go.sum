@@ -1,4 +1,3 @@
-github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/go-test/deep v1.0.4 h1:u2CU3YKy9I2pmu9pX0eq50wCgjfGIt539SqR7FbHiho=
@@ -12,14 +11,12 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/robfig/cron/v3 v3.0.1 h1:WdRxkvbJztn8LMz/QEvLN5sBU+xKpSqwwUO1Pjr4qDs=
 github.com/robfig/cron/v3 v3.0.1/go.mod h1:eQICP3HwyT7UooqI/z+Ov+PtYAWygg1TEWWzGIFLtro=
-github.com/shomali11/commander v0.0.0-20230730023802-0b64f620037d h1:IImd1gV+EdlKWWi8RoHSaccjLQtSi4tJiFOjq6mM+ZQ=
-github.com/shomali11/commander v0.0.0-20230730023802-0b64f620037d/go.mod h1:bYyJw/Aj9fK+qoFmRbPJeWsDgq7WGO8f/Qof95qPug4=
-github.com/shomali11/proper v0.0.0-20180607004733-233a9a872c30/go.mod h1:O723XwIZBX3FR45rBic/Eyp/DKo/YtchYFURzpUWY2c=
-github.com/shomali11/proper v0.0.0-20190608032528-6e70a05688e7 h1:wAyBXFZOcLkbaoDlDbMpTCw9xy3yP2YJDMRrbTVuVKU=
-github.com/shomali11/proper v0.0.0-20190608032528-6e70a05688e7/go.mod h1:cg2VM85Y+0BcVSICzB+OafOlTcJ9QPbtF4qtuhuR/GA=
 github.com/slack-go/slack v0.13.0 h1:7my/pR2ubZJ9912p9FtvALYpbt0cQPAqkRy2jaSI1PQ=
 github.com/slack-go/slack v0.13.0/go.mod h1:hlGi5oXA+Gt+yWTPP0plCdRKmjsDxecdHxYQdlMQKOw=
-github.com/stretchr/testify v1.2.1/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
+github.com/slack-io/commander v0.0.0-20231120025847-9fd78b4b2d54 h1:aRc+G2mUb697z6bR09Roq6kP08suJulgNo00SGhAsfM=
+github.com/slack-io/commander v0.0.0-20231120025847-9fd78b4b2d54/go.mod h1:aHmXZnL/ELKlfMybblXnnCl+IeHQ+gMb++DT7ujIGlA=
+github.com/slack-io/proper v0.0.0-20231119200853-f78ba4fc878f h1:wiEJBKJKvMOeE9KtLV7iwtHOsNXDBZloL+FPlkZ6vnA=
+github.com/slack-io/proper v0.0.0-20231119200853-f78ba4fc878f/go.mod h1:q+erLGESzGsEP/cJeGoDxfdLKDstT4caj/JvAShLEt4=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=

@@ -1,7 +1,7 @@
 package slacker
 
 import (
-	"github.com/shomali11/proper"
+	"github.com/slack-io/proper"
 )
 
 const (

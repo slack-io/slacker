@@ -3,8 +3,8 @@ package slacker
 import (
 	"context"
 
-	"github.com/shomali11/proper"
 	"github.com/slack-go/slack"
+	"github.com/slack-io/proper"
 )
 
 // newCommandContext creates a new command context
