@@ -78,6 +78,18 @@ func (r *CommandContext) Logger() Logger {
 	return r.logger
 }
 
+// WithContext returns a shallow copy of r with its context changed
+// to ctx. The provided ctx must be non-nil.
+func (r *CommandContext) WithContext(ctx context.Context) *CommandContext {
+	if ctx == nil {
+		panic("nil context")
+	}
+	r2 := new(CommandContext)
+	*r2 = *r
+	r.ctx = ctx
+	return r
+}
+
 // newInteractionContext creates a new interaction context
 func newInteractionContext(
 	ctx context.Context,
@@ -140,6 +152,18 @@ func (r *InteractionContext) Logger() Logger {
 	return r.logger
 }
 
+// WithContext returns a shallow copy of r with its context changed
+// to ctx. The provided ctx must be non-nil.
+func (r *InteractionContext) WithContext(ctx context.Context) *InteractionContext {
+	if ctx == nil {
+		panic("nil context")
+	}
+	r2 := new(InteractionContext)
+	*r2 = *r
+	r.ctx = ctx
+	return r
+}
+
 // newJobContext creates a new bot context
 func newJobContext(ctx context.Context, logger Logger, slackClient *slack.Client, definition *JobDefinition) *JobContext {
 	writer := newWriter(ctx, logger, slackClient)
@@ -185,4 +209,16 @@ func (r *JobContext) SlackClient() *slack.Client {
 // Logger returns the logger
 func (r *JobContext) Logger() Logger {
 	return r.logger
+}
+
+// WithContext returns a shallow copy of r with its context changed
+// to ctx. The provided ctx must be non-nil.
+func (r *JobContext) WithContext(ctx context.Context) *JobContext {
+	if ctx == nil {
+		panic("nil context")
+	}
+	r2 := new(JobContext)
+	*r2 = *r
+	r.ctx = ctx
+	return r
 }
