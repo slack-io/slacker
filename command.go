@@ -1,8 +1,8 @@
 package slacker
 
 import (
-	"github.com/shomali11/commander"
-	"github.com/shomali11/proper"
+	"github.com/slack-io/commander"
+	"github.com/slack-io/proper"
 )
 
 // CommandDefinition structure contains definition of the bot command
