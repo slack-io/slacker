@@ -58,5 +58,10 @@ func (r *Replier) convertOptions(options ...ReplyOption) []PostOption {
 	if replyOptions.ScheduleTime != nil {
 		responseOptions = append(responseOptions, SetSchedule(*replyOptions.ScheduleTime))
 	}
+
+	if replyOptions.UnfurlLinks != nil {
+		responseOptions = append(responseOptions, SetUnfurlLinks(*replyOptions.UnfurlLinks))
+	}
+
 	return responseOptions
 }

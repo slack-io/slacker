@@ -108,12 +108,20 @@ func WithSchedule(timestamp time.Time) ReplyOption {
 	}
 }
 
+// WithUnfurlLinks sets the unfurl_links option
+func WithUnfurlLinks(unfurlLinks bool) ReplyOption {
+	return func(defaults *replyOptions) {
+		defaults.UnfurlLinks = &unfurlLinks
+	}
+}
+
 type replyOptions struct {
 	Attachments      []slack.Attachment
 	InThread         *bool
 	ReplaceMessageTS string
 	IsEphemeral      bool
 	ScheduleTime     *time.Time
+	UnfurlLinks      *bool
 }
 
 // newReplyOptions builds our ReplyOptions from zero or more ReplyOption.
@@ -167,12 +175,20 @@ func SetSchedule(timestamp time.Time) PostOption {
 	}
 }
 
+// SetUnfurlLinks sets the unfurl_links option
+func SetUnfurlLinks(unfurlLinks bool) PostOption {
+	return func(defaults *postOptions) {
+		defaults.UnfurlLinks = &unfurlLinks
+	}
+}
+
 type postOptions struct {
 	Attachments      []slack.Attachment
 	ThreadTS         string
 	ReplaceMessageTS string
 	EphemeralUserID  string
 	ScheduleTime     *time.Time
+	UnfurlLinks      *bool
 }
 
 // newPostOptions builds our PostOptions from zero or more PostOption.
