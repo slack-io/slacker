@@ -1,5 +1,7 @@
 package slacker
 
+import "github.com/slack-go/slack/socketmode"
+
 func executeCommand(ctx *CommandContext, handler CommandHandler, middlewares ...CommandMiddlewareHandler) {
 	if handler == nil {
 		return
@@ -12,7 +14,7 @@ func executeCommand(ctx *CommandContext, handler CommandHandler, middlewares ...
 	handler(ctx)
 }
 
-func executeInteraction(ctx *InteractionContext, handler InteractionHandler, middlewares ...InteractionMiddlewareHandler) {
+func executeInteraction(ctx *InteractionContext, handler InteractionHandler, request *socketmode.Request, middlewares ...InteractionMiddlewareHandler) {
 	if handler == nil {
 		return
 	}
@@ -21,7 +23,7 @@ func executeInteraction(ctx *InteractionContext, handler InteractionHandler, mid
 		handler = middlewares[i](handler)
 	}
 
-	handler(ctx)
+	handler(ctx, request)
 }
 
 func executeJob(ctx *JobContext, handler JobHandler, middlewares ...JobMiddlewareHandler) func() {
