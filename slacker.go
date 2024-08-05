@@ -314,7 +314,10 @@ func (s *Slacker) Listen(ctx context.Context) error {
 					}
 
 					// Acknowledge receiving the request
-					s.socketModeClient.Ack(*socketEvent.Request)
+
+					if callback.Type != slack.InteractionTypeBlockSuggestion {
+						s.socketModeClient.Ack(*socketEvent.Request)
+					}
 
 					go s.handleInteractionEvent(ctx, &callback, socketEvent.Request)
 
