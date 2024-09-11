@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/slack-io/slacker"
 	"github.com/slack-go/slack/socketmode"
+	"github.com/slack-io/slacker"
 )
 
 // Adding handlers to when the bot is connected, a default for when none of the commands match,

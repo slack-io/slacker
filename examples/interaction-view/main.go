@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/slack-io/slacker"
 	"github.com/slack-go/slack"
+	"github.com/slack-io/slacker"
 )
 
 var moodSurveyView = slack.ModalViewRequest{

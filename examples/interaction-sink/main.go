@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/slack-io/slacker"
 	"github.com/slack-go/slack"
+	"github.com/slack-io/slacker"
 )
 
 // Show cases having one handler for all interactions

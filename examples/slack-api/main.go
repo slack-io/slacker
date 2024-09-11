@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/slack-io/slacker"
 	"github.com/slack-go/slack"
+	"github.com/slack-io/slacker"
 )
 
 // Showcasing the ability to access the github.com/slack-go/slack API and upload a file
