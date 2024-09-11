@@ -32,6 +32,15 @@ func newCommandContext(
 	}
 }
 
+func NewCommandContext(
+	ctx context.Context,
+	slackClient *slack.Client,
+	event *MessageEvent,
+	parameters *proper.Properties,
+) *CommandContext {
+	return newCommandContext(ctx, nil, slackClient, event, nil, parameters)
+}
+
 // CommandContext contains information relevant to the executed command
 type CommandContext struct {
 	ctx         context.Context
