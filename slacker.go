@@ -45,6 +45,7 @@ func NewClient(botToken, appToken string, clientOptions ...ClientOption) *Slacke
 		sanitizeEventTextHandler: defaultEventTextSanitizer,
 		logger:                   options.Logger,
 		interactions:             make(map[slack.InteractionType][]*Interaction),
+		selfAck:                  options.SelfAck,
 	}
 	return slacker
 }
@@ -73,6 +74,7 @@ type Slacker struct {
 	botInteractionMode            BotMode
 	sanitizeEventTextHandler      func(string) string
 	logger                        Logger
+	selfAck                       bool
 }
 
 // GetCommandGroups returns Command Groups
@@ -313,8 +315,10 @@ func (s *Slacker) Listen(ctx context.Context) error {
 						continue
 					}
 
-					// Acknowledge receiving the request
-					s.socketModeClient.Ack(*socketEvent.Request)
+					// Acknowledge receiving the request if self Acknowledge is disabled
+					if !s.selfAck {
+						s.socketModeClient.Ack(*socketEvent.Request)
+					}
 
 					go s.handleInteractionEvent(ctx, &callback, *socketEvent.Request)
 
