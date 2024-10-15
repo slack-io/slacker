@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/robfig/cron/v3 v3.0.1
-	github.com/slack-go/slack v0.13.0
+	github.com/slack-go/slack v0.15.0
 	github.com/slack-io/commander v0.0.0-20231120025847-9fd78b4b2d54
 	github.com/slack-io/proper v0.0.0-20231119200853-f78ba4fc878f
 )
