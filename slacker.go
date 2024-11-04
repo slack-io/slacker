@@ -209,7 +209,9 @@ func (s *Slacker) AddJobMiddleware(middleware JobMiddlewareHandler) {
 
 // Listen receives events from Slack and each is handled as needed
 func (s *Slacker) Listen(ctx context.Context) error {
-	s.prependHelpHandle()
+
+	// no need at all to handle help command if there are no commands
+	//s.prependHelpHandle()
 
 	go func() {
 		for {
