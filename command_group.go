@@ -28,6 +28,11 @@ func (g *CommandGroup) AddCommand(definition *CommandDefinition) {
 	g.commands = append(g.commands, newCommand(definition))
 }
 
+func (g *CommandGroup) AddCustomCommand(cmd Command) {
+	cmd.Definition().Command = strings.TrimSpace(fmt.Sprintf("%s %s", g.prefix, cmd.Definition().Command))
+	g.commands = append(g.commands, cmd)
+}
+
 // PrependCommand define a new command and prepend it to the list of group bot commands
 func (g *CommandGroup) PrependCommand(definition *CommandDefinition) {
 	definition.Command = strings.TrimSpace(fmt.Sprintf("%s %s", g.prefix, definition.Command))

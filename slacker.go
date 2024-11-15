@@ -163,6 +163,14 @@ func (s *Slacker) AddCommand(definition *CommandDefinition) {
 	s.commandGroups[0].AddCommand(definition)
 }
 
+func (s *Slacker) AddCustomCommand(cmd Command) {
+	if len(cmd.Definition().Command) == 0 {
+		s.logger.Error("missing `Command`")
+		return
+	}
+	s.commandGroups[0].AddCustomCommand(cmd)
+}
+
 // AddCommandMiddleware appends a new command middleware to the list of root level command middlewares
 func (s *Slacker) AddCommandMiddleware(middleware CommandMiddlewareHandler) {
 	s.commandMiddlewares = append(s.commandMiddlewares, middleware)
