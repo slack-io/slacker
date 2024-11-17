@@ -44,9 +44,16 @@ func WithCronLocation(location *time.Location) ClientOption {
 	}
 }
 
+func WithSelfAck(selfAck bool) ClientOption {
+	return func(defaults *clientOptions) {
+		defaults.SelfAck = selfAck
+	}
+}
+
 type clientOptions struct {
 	APIURL       string
 	Debug        bool
+	SelfAck      bool
 	BotMode      BotMode
 	Logger       Logger
 	CronLocation *time.Location
@@ -58,6 +65,7 @@ func newClientOptions(options ...ClientOption) *clientOptions {
 		Debug:        false,
 		BotMode:      BotModeIgnoreAll,
 		CronLocation: time.Local,
+		SelfAck:      false,
 	}
 
 	for _, option := range options {
