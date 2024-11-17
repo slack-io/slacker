@@ -217,7 +217,9 @@ func (s *Slacker) AddJobMiddleware(middleware JobMiddlewareHandler) {
 
 // Listen receives events from Slack and each is handled as needed
 func (s *Slacker) Listen(ctx context.Context) error {
-	s.prependHelpHandle()
+
+	// no need at all to handle help command if there are no commands
+	//s.prependHelpHandle()
 
 	go func() {
 		for {
@@ -322,9 +324,12 @@ func (s *Slacker) Listen(ctx context.Context) error {
 					}
 
 					// Acknowledge receiving the request
-					s.socketModeClient.Ack(*socketEvent.Request)
 
-					go s.handleInteractionEvent(ctx, &callback)
+					if callback.Type != slack.InteractionTypeBlockSuggestion {
+						s.socketModeClient.Ack(*socketEvent.Request)
+					}
+
+					go s.handleInteractionEvent(ctx, &callback, socketEvent.Request)
 
 				default:
 					if s.unsupportedEventHandler != nil {
@@ -448,7 +453,7 @@ func (s *Slacker) startCronJobs(ctx context.Context) {
 	s.cronClient.Start()
 }
 
-func (s *Slacker) handleInteractionEvent(ctx context.Context, callback *slack.InteractionCallback) {
+func (s *Slacker) handleInteractionEvent(ctx context.Context, callback *slack.InteractionCallback, request *socketmode.Request) {
 	middlewares := make([]InteractionMiddlewareHandler, 0)
 	middlewares = append(middlewares, s.interactionMiddlewares...)
 
@@ -490,14 +495,14 @@ func (s *Slacker) handleInteractionEvent(ctx context.Context, callback *slack.In
 	if interaction != nil {
 		interactionCtx := newInteractionContext(ctx, s.logger, s.slackClient, callback, definition)
 		middlewares = append(middlewares, definition.Middlewares...)
-		executeInteraction(interactionCtx, definition.Handler, middlewares...)
+		executeInteraction(interactionCtx, definition.Handler, request, middlewares...)
 		return
 	}
 
 	s.logger.Debug("unsupported interaction type", "type", callback.Type)
 	if s.unsupportedInteractionHandler != nil {
 		interactionCtx := newInteractionContext(ctx, s.logger, s.slackClient, callback, nil)
-		executeInteraction(interactionCtx, s.unsupportedInteractionHandler, middlewares...)
+		executeInteraction(interactionCtx, s.unsupportedInteractionHandler, request, middlewares...)
 	}
 }
 
